@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import './index.css';
 
 import { store, history } from './applicationConfiguration';
+import Contacts from './containers/ContactList/router.js';
 
 ReactDOM.render(
     <Provider store={store}>
