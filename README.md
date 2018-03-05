@@ -1,4 +1,4 @@
-To run server execute json-server --watch ./jsonserver/db.json
+To run server execute json-server --watch ./jsonserver/db.json <br>
 To run client execute yarn start
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
