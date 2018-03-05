@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import './index.css';
+
+import { store, history } from './applicationConfiguration';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Redirect exact from="/" to="/contacts"/>
+                <Route path="/contacts" component={Contacts}/>
+            </Switch>
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById('root')
+);
