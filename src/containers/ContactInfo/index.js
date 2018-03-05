@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { push, goBack } from 'react-router-redux';
 import { find, propEq } from 'ramda';
 
+import { removeContact } from '../ContactList/actions';
+
 const ContactInfo = ({ contact, handleEdit, handleDelete, handleBack }) => {
     const { firstName, lastName, phone, calls } = contact;
 
@@ -32,7 +34,7 @@ const ContactInfo = ({ contact, handleEdit, handleDelete, handleBack }) => {
             </thead>
 
             <tbody>
-            {calls.map((call, i) => (
+            {calls && calls.map((call, i) => (
               <tr key={i}>
                   <td>{ call.date }</td>
                   <td>{ call.duration }</td>
@@ -52,7 +54,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(push(`${ownProps.location.pathname}/edit`))
     },
     handleDelete: () => {
-        dispatch({ type: 'REMOVE_CONTACT', id: ownProps.match.params.id})
+        dispatch(removeContact(ownProps.match.params.id));
+        dispatch(push('/contacts'));
     },
     handleBack: () => {
         dispatch(goBack())

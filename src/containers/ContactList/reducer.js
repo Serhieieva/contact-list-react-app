@@ -1,24 +1,23 @@
-import { GET_CONTACTS, REMOVE_CONTACT, UPDATE_CONTACT } from './constants';
+import { path } from 'ramda';
+import { GET_CONTACTS_SUCCEED, REMOVE_CONTACT_SUCCEED, UPDATE_CONTACT_SUCCEED } from './constants';
 
-const initialState = [
-    {id: '0', firstName: 'Vasyliy', lastName: 'Ivanov', phone: '122376', calls: [{date: "01.06.2017", duration: "00:02:30"}]},
-    {id: '1', firstName: 'Ivanna', lastName: 'Ivanova', phone: '123759', calls: [{date: "01.06.2017", duration: "00:02:30"}]},
-    {id: '3', firstName: 'Syliko', lastName: 'Ivanov', phone: '1234679', calls: [{date: "01.06.2017", duration: "00:02:30"}]},
-];
+const initialState = [];
 
 const contactListReducer = {};
 
-contactListReducer[ GET_CONTACTS ] = (state, action) => {
+contactListReducer[ GET_CONTACTS_SUCCEED ] = (state, action) => {
     return [
-        ...action.payload,
+        ...action.payload.data,
     ];
 };
 
-contactListReducer[ REMOVE_CONTACT ] = (state, action) => {
-    return state.filter(contact => contact.id === action.id);
+contactListReducer[ REMOVE_CONTACT_SUCCEED ] = (state, action) => {
+    const id = path(['payload', 'config', 'reduxSourceAction', 'payload', 'id'], action);
+
+    return state.filter(contact => contact.id !== id);
 };
 
-contactListReducer[ UPDATE_CONTACT ] = (state, action) => {
+contactListReducer[ UPDATE_CONTACT_SUCCEED ] = (state, action) => {
     return state.map(contact => ( contact.id === action.id ? { ...contact, ...action.payload } : contact ));
 };
 
