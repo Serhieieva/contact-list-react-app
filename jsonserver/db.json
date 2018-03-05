@@ -1,0 +1,179 @@
+{
+  "contacts": [
+    {
+      "id": "3",
+      "firstName": "Syliko",
+      "lastName": "Ivanova",
+      "phone": "1234679",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Kieth",
+      "lastName": "Gearing",
+      "phone": "+380689758903",
+      "id": "1",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Rolando",
+      "lastName": "Liao",
+      "phone": "asdasd",
+      "id": "2",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Jeramy",
+      "lastName": "Harmer",
+      "phone": "+30588223",
+      "id": "5",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Verda",
+      "lastName": "Sprvill",
+      "phone": "+7824566",
+      "id": "6",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Wendi1",
+      "lastName": "Biggers",
+      "phone": "+1234124124124",
+      "id": "7",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Minnie",
+      "lastName": "Biggers",
+      "phone": "+1234124124124",
+      "id": "8",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Wendi",
+      "lastName": "Biggers",
+      "phone": "+1234124124124",
+      "id": "9",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Qin",
+      "lastName": "Shang",
+      "phone": "+1234124124124",
+      "id": "10",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    },
+    {
+      "firstName": "Zhou",
+      "lastName": "Xia",
+      "phone": "+1234124124124",
+      "id": "11",
+      "calls": [
+        {
+          "date": "01.06.2017",
+          "duration": "00:02:30",
+          "direction": "outgoing"
+        },
+        {
+          "date": "01.06.2017",
+          "duration": "00:01:30",
+          "direction": "incoming"
+        }
+      ]
+    }
+  ]
+}
