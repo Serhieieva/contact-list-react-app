@@ -1,24 +1,31 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
+import { Field, reduxForm, propTypes as reduxFormPropTypes} from 'redux-form';
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
 import { find, propEq } from 'ramda';
+import { updateContact, createContact} from '../ContactList/actions';
 
-const validate = values => {
-    const errors = {};
-
-    if (!values.firstName || !values.lastName) {
-        errors.firstName = 'Required'
-    } else if (values.firstName.length > 10) {
-        errors.firstName = 'Must be 10 characters or less'
-    }
-
-    return errors
+const propTypes = {
+    ...reduxFormPropTypes,
+    id: PropTypes.string,
+    handleGoBack: PropTypes.func.isRequired,
+    handleCreate: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
 };
 
-const ContactForm = ({ handleSubmit, pristine, submitting, handleCancel}) => {
+const ContactForm = ({ id, handleSubmit, pristine, submitting, handleGoBack, handleCreate, handleEdit}) => {
+    const saveContact = contact => {
+        id ? handleEdit(id, contact) : handleCreate(contact);
+    };
+
+    const handleCancel = event => {
+        event.preventDefault();
+        handleGoBack();
+    };
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(saveContact)}>
             <label>
                 First Name
                 <Field
@@ -55,12 +62,22 @@ const ContactForm = ({ handleSubmit, pristine, submitting, handleCancel}) => {
     );
 };
 
+ContactForm.propTypes = propTypes;
+
 const mapStateToProps = (state, ownProps) => ({
     initialValues: find(propEq('id', ownProps.id))(state.contactList) || {}
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleCancel: () => dispatch(goBack())
+    handleGoBack: () => dispatch(goBack()),
+    handleCreate: contact => {
+        dispatch(createContact(contact));
+        dispatch(goBack());
+    },
+    handleEdit: (id, contact) => {
+        dispatch(updateContact(id, contact));
+        dispatch(goBack());
+    },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'contact'}, validate)(ContactForm));
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'contact'})(ContactForm));

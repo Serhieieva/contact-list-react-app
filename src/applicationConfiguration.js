@@ -12,7 +12,8 @@ export const history = createHistory();
 
 const client = axios.create({
     baseURL: 'http://localhost:4000',
-    responseType: 'json'
+    responseType: 'json',
+    'Content-Type': 'application/json',
 });
 
 // const middlewareConfig = {

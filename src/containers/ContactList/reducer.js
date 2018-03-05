@@ -1,5 +1,10 @@
 import { path } from 'ramda';
-import { GET_CONTACTS_SUCCEED, REMOVE_CONTACT_SUCCEED, UPDATE_CONTACT_SUCCEED } from './constants';
+import {
+    REMOVE_CONTACT_SUCCEED,
+    UPDATE_CONTACT_SUCCEED,
+    CREATE_CONTACT_SUCCEED,
+    GET_CONTACTS_SUCCEED,
+} from './constants';
 
 const initialState = [];
 
@@ -18,7 +23,16 @@ contactListReducer[ REMOVE_CONTACT_SUCCEED ] = (state, action) => {
 };
 
 contactListReducer[ UPDATE_CONTACT_SUCCEED ] = (state, action) => {
-    return state.map(contact => ( contact.id === action.id ? { ...contact, ...action.payload } : contact ));
+    const payload = action.payload.data;
+
+    return state.map(contact => ( contact.id === payload.id ? { ...contact, ...payload } : contact ));
+};
+
+contactListReducer[ CREATE_CONTACT_SUCCEED ] = (state, action) => {
+    return [
+        ...state,
+        action.payload.data
+    ];
 };
 
 export default function (state = initialState, action) {

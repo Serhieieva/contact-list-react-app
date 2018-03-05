@@ -30,7 +30,7 @@ export function removeContact(id) {
     }
 }
 
-export function updateContact(id) {
+export function updateContact(id, data) {
     return {
         types: [
             'UPDATE_CONTACT',
@@ -41,13 +41,13 @@ export function updateContact(id) {
             request:{
                 url:`/contacts/${id}`,
                 method: 'PUT',
-
+                data
             }
         }
     }
 }
 
-export function createContact() {
+export function createContact(data) {
     return {
         types: [
             'CREATE_CONTACT',
@@ -58,6 +58,7 @@ export function createContact() {
             request:{
                 url:'/contacts',
                 method: 'POST',
+                data
             }
         }
     }
