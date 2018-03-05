@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { getContactList } from './actions';
 
 import ContactList from '../ContactList';
-import ContactForm from '../ContactForm';
+import ContactEdit from '../ContactEdit';
 import ContactInfo from '../ContactInfo';
 
 class Contacts extends Component {
@@ -17,9 +17,9 @@ class Contacts extends Component {
         return (
             <Switch>
                 <Route exact path="/contacts" component={ContactList}/>
-                <Route path="/contacts/add" component={ContactForm}/>
+                <Route path="/contacts/add" component={ContactEdit}/>
                 <Route exact path="/contacts/:id" component={ContactInfo}/>
-                <Route path="/contacts/:id/edit" component={ContactForm}/>
+                <Route path="/contacts/:id/edit" component={ContactEdit}/>
             </Switch>
         );
     }

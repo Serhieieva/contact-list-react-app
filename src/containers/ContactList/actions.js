@@ -1,15 +1,19 @@
-export function getContactList() {
-    return {
-        types: [
-            'GET_CONTACTS',
-            'GET_CONTACTS_SUCCEED',
-            'GET_CONTACTS_FAILED'
-        ],
-        payload: {
-            request:{
-                url:'/contacts'
+export function getContactList(page) {
+    return (dispatch, getState) => {
+        const { limit } = getState().contactList.paginationModel;
+
+        dispatch({
+            types: [
+                'GET_CONTACTS',
+                'GET_CONTACTS_SUCCEED',
+                'GET_CONTACTS_FAILED'
+            ],
+            payload: {
+                request:{
+                    url:`/contacts?_page=${page || 1}&_limit=${limit}`
+                }
             }
-        }
+        });
     }
 }
 

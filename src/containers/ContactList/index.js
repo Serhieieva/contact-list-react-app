@@ -1,8 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-const ContactList = ({ contactList }) => {
+import { getContactList } from './actions';
+import Pagination from '../../components/Pagination';
+
+const propTypes = {
+    contactList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    paginationModel: PropTypes.object.isRequired,
+};
+
+const ContactList = ({ contactList, paginationModel, getContactList }) => {
     return (
         <div className="container">
             <header className="navbar bg-primary">
@@ -17,10 +26,20 @@ const ContactList = ({ contactList }) => {
                         <Link to={{ pathname: `/contacts/${contact.id}` }}>{contact.firstName} {contact.lastName}</Link>
                     </li>))}
             </ul>
+            <Pagination model={paginationModel} getContactList={getContactList}/>
         </div>
     );
 };
 
-const mapStateToProps = state => ({ contactList: state.contactList });
+ContactList.propTypes = propTypes;
 
-export default connect(mapStateToProps)(ContactList);
+const mapDispatchToProps = dispatch => ({
+    getContactList: page => dispatch(getContactList(page)),
+});
+
+const mapStateToProps = state => ({
+    contactList: state.contactList.items,
+    paginationModel: state.contactList.paginationModel
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

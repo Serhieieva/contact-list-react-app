@@ -13,19 +13,11 @@ export const history = createHistory();
 const client = axios.create({
     baseURL: 'http://localhost:4000',
     responseType: 'json',
-    'Content-Type': 'application/json',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+    }
 });
-
-// const middlewareConfig = {
-//     interceptors: {
-//         request: [],
-//         response: [
-//             function ({ getState, dispatch, getSourceAction }, req) {
-//                 console.log(req); //contains information about request object
-//             }
-//         ]
-//     }
-// };
 
 const middlewares = [
     routerMiddleware(history),
