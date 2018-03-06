@@ -26,7 +26,7 @@ const ContactList = ({ contactList, paginationModel, getContactList }) => {
                         <Link to={{ pathname: `/contacts/${contact.id}` }}>{contact.firstName} {contact.lastName}</Link>
                     </li>))}
             </ul>
-            <Pagination model={paginationModel} getContactList={getContactList}/>
+            <Pagination model={paginationModel} getAnotherPage={getContactList} />
         </div>
     );
 };
